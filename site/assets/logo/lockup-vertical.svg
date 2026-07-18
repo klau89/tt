@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 320" width="460" height="320">
+<circle cx="230" cy="96" r="80" fill="#10B26A"></circle>
+<circle cx="298" cy="34" r="24" fill="#ECF23F"></circle>
+<text x="230" y="96" font-family="Fredoka, sans-serif" font-weight="700" font-size="76" fill="#FDF6E6" text-anchor="middle" dominant-baseline="central" letter-spacing="3">TT</text>
+<text x="230" y="248" font-family="Fredoka, sans-serif" font-weight="600" font-size="60" fill="#163B2A" text-anchor="middle" dominant-baseline="central">Tennis Terminal</text>
+</svg>

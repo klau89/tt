@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/tt-design-system-dcc5791d-6fec-4442-b63f-5703ae2374c4/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/tt-design-system-dcc5791d-6fec-4442-b63f-5703ae2374c4/tokens/colors.css">
+<link rel="stylesheet" href="_ds/tt-design-system-dcc5791d-6fec-4442-b63f-5703ae2374c4/tokens/typography.css">
+<link rel="stylesheet" href="_ds/tt-design-system-dcc5791d-6fec-4442-b63f-5703ae2374c4/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/tt-design-system-dcc5791d-6fec-4442-b63f-5703ae2374c4/tokens/effects.css">
+<link rel="stylesheet" href="_ds/tt-design-system-dcc5791d-6fec-4442-b63f-5703ae2374c4/styles.css">
+<script src="_ds/tt-design-system-dcc5791d-6fec-4442-b63f-5703ae2374c4/_ds_bundle.js"></script>
+<style>
+  .tt-navlink { font-family: var(--font-display); font-weight: 500; font-size: 15px; color: var(--tt-court-ink); text-decoration:none; }
+  .tt-navlink:hover { color: var(--tt-play-green); }
+</style>
+</helmet>
+<header style="width:100%;background:rgba(253,246,230,0.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--tt-border);font-family:var(--font-body)">
+  <div style="max-width:1120px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
+    <a href="index.html" style="display:flex;align-items:center">
+      <x-import component-from-global-scope="TennisTerminalDesignSystem_dcc579.Logo" variant="horizontal" height="{{ 34 }}" asset-base="assets/logo" hint-size="180px,34px"></x-import>
+    </a>
+    <nav style="display:flex;align-items:center;gap:26px;flex-wrap:wrap">
+      <a class="tt-navlink" href="how-it-works.html">How it works</a>
+      <a class="tt-navlink" href="pricing.html">Pricing</a>
+      <a class="tt-navlink" href="location.html">Location</a>
+      <a class="tt-navlink" href="events.html">Events</a>
+      <a class="tt-navlink" href="faq.html">FAQ</a>
+    </nav>
+    <a href="join.html" style="font-family:var(--font-display);font-weight:600;font-size:15px;color:var(--color-primary-on);background:var(--tt-play-green);padding:11px 20px;border-radius:10px;text-decoration:none">Join the waitlist</a>
+  </div>
+</header>
+</x-dc>
+</body>
+</html>

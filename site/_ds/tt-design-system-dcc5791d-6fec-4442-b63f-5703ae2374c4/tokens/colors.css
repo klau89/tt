@@ -1,0 +1,70 @@
+/* ============================================================
+   Tennis Terminal — Color tokens
+   Bright, warm, unmistakable. Play Green leads; Marigold &
+   Ball Yellow are the spark; Pool Blue supports; Honey Cream
+   is the default background.
+   ============================================================ */
+:root {
+  /* --- Brand palette (base) --- */
+  --tt-play-green: #10B26A;   /* primary — PANTONE 7481 C */
+  --tt-ball-yellow: #ECF23F;  /* pop / bounce — PANTONE 389 C */
+  --tt-marigold: #FB9E1B;     /* energy / peak — PMS 1375 C */
+  --tt-pool-blue: #17A2C4;    /* supporting accent — PMS 7710 C */
+  --tt-court-ink: #163B2A;    /* near-black green — PMS 5535 C */
+  --tt-honey-cream: #FDF6E6;  /* default background — PMS 7499 C */
+
+  /* --- Green scale (derived, for hovers/tints) --- */
+  --tt-green-700: #0C8A52;
+  --tt-green-600: #10B26A;
+  --tt-green-500: #1FC77C;
+  --tt-green-100: #EBF7F0;   /* tinted surface (success/positive bg) */
+  --tt-green-50:  #F3FBF7;
+
+  /* --- Neutrals / warm greys on cream --- */
+  --tt-white: #FFFFFF;
+  --tt-cream: #FDF6E6;
+  --tt-cream-shade: #EFE6CE;  /* card border on cream */
+  --tt-border: #EBE0C6;       /* hairline / divider */
+  --tt-ink-700: #4A5A4E;      /* body text on cream */
+  --tt-ink-500: #6B6A5F;      /* secondary text */
+  --tt-ink-300: #9A9270;      /* muted / mono captions */
+
+  /* --- Semantic / status --- */
+  --tt-danger: #C6552F;       /* rust — warnings, don'ts, errors */
+  --tt-danger-bg: #FBEEE8;
+  --tt-danger-border: #F1D3C6;
+  --tt-success: #10B26A;
+  --tt-success-bg: #EBF7F0;
+  --tt-success-border: #C7E7D7;
+
+  /* ============================================================
+     Semantic aliases — reference these in components/kits.
+     ============================================================ */
+  --color-bg: var(--tt-honey-cream);
+  --color-surface: var(--tt-white);
+  --color-surface-alt: var(--tt-cream);
+  --color-surface-ink: var(--tt-court-ink);      /* dark panels */
+  --color-border: var(--tt-cream-shade);
+  --color-border-soft: var(--tt-border);
+
+  --color-primary: var(--tt-play-green);
+  --color-primary-hover: var(--tt-green-700);
+  --color-primary-on: var(--tt-honey-cream);     /* text/icon on green */
+  --color-accent: var(--tt-ball-yellow);         /* small spark accent ONLY — not CTAs/prices */
+  --color-accent-on: var(--tt-court-ink);        /* text on yellow */
+  --color-energy: var(--tt-marigold);            /* peak signal, energy */
+  --color-info: var(--tt-pool-blue);
+
+  --color-price: var(--tt-court-ink);            /* prices: ink, not yellow */
+  --color-price-peak: var(--tt-marigold);        /* peak price emphasis */
+
+  --text-heading: var(--tt-court-ink);
+  --text-body: var(--tt-ink-700);
+  --text-muted: var(--tt-ink-500);
+  --text-faint: var(--tt-ink-300);
+  --text-on-ink: var(--tt-honey-cream);
+
+  --color-selection-bg: var(--tt-ball-yellow);
+  --color-selection-fg: var(--tt-court-ink);
+  --color-link: var(--tt-play-green);
+}

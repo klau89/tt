@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H" crossorigin="anonymous">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH" crossorigin="anonymous"></script>
+<style>
+  html,body { margin:0; height:100%; }
+  #map { width:100%; height:100%; background:#FDF6E6; }
+  .leaflet-container { font-family: ui-sans-serif, system-ui, sans-serif; background:#FDF6E6; }
+  /* Warm the clean Positron basemap toward the honey-cream palette (tiles only; overlays stay true colour) */
+  .leaflet-tile-pane { filter: sepia(0.42) saturate(0.8) brightness(1.04) hue-rotate(-6deg) contrast(0.96); }
+  .leaflet-control-attribution { background:rgba(253,246,230,0.85); color:#6B7A70; font-size:10px; }
+  .leaflet-control-attribution a { color:#10B26A; }
+  .leaflet-bar a { color:#163B2A; border-bottom-color:#EFE6CE; }
+  .tt-badge {
+    display:inline-block; background:#163B2A; color:#FDF6E6; font-size:11px; letter-spacing:0.12em;
+    text-transform:uppercase; padding:6px 12px; border-radius:999px; font-weight:600;
+    box-shadow:0 6px 18px rgba(22,59,42,0.25); white-space:nowrap;
+  }
+</style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+  var center = [40.6952, -73.9998]; // Brooklyn waterfront, general area (not exact)
+  var map = L.map('map', { scrollWheelZoom:false, zoomControl:true, attributionControl:true }).setView(center, 15);
+  map.attributionControl.setPrefix(false);
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    maxZoom: 20,
+    subdomains: 'abcd',
+    attribution: '© OpenStreetMap contributors © CARTO'
+  }).addTo(map);
+
+  // General-area circle (approximate — exact address to come)
+  L.circle(center, {
+    radius: 420,
+    color: '#10B26A',
+    weight: 2,
+    fillColor: '#10B26A',
+    fillOpacity: 0.16
+  }).addTo(map);
+
+  L.marker(center, {
+    icon: L.divIcon({ className:'', html:'<div style="width:220px;text-align:center"><div class="tt-badge">Opening here soon</div></div>', iconSize:[220,28], iconAnchor:[110,14] })
+  }).addTo(map);
+</script>
+</body>
+</html>

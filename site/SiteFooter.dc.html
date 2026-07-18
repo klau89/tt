@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/tt-design-system-dcc5791d-6fec-4442-b63f-5703ae2374c4/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/tt-design-system-dcc5791d-6fec-4442-b63f-5703ae2374c4/tokens/colors.css">
+<link rel="stylesheet" href="_ds/tt-design-system-dcc5791d-6fec-4442-b63f-5703ae2374c4/tokens/typography.css">
+<link rel="stylesheet" href="_ds/tt-design-system-dcc5791d-6fec-4442-b63f-5703ae2374c4/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/tt-design-system-dcc5791d-6fec-4442-b63f-5703ae2374c4/tokens/effects.css">
+<link rel="stylesheet" href="_ds/tt-design-system-dcc5791d-6fec-4442-b63f-5703ae2374c4/styles.css">
+<script src="_ds/tt-design-system-dcc5791d-6fec-4442-b63f-5703ae2374c4/_ds_bundle.js"></script>
+<style>
+  .tt-footlink { font-family: var(--font-body); font-size:15px; color: var(--tt-play-green); text-decoration:none; }
+  .tt-footlink:hover { color: var(--tt-green-700); }
+</style>
+</helmet>
+<footer style="width:100%;background:var(--tt-honey-cream);border-top:1px solid var(--tt-cream-shade);font-family:var(--font-body)">
+  <div style="max-width:1120px;margin:0 auto;padding:48px 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px;align-items:start">
+    <div>
+      <x-import component-from-global-scope="TennisTerminalDesignSystem_dcc579.Logo" variant="horizontal" height="{{ 32 }}" asset-base="assets/logo" hint-size="170px,32px"></x-import>
+      <p style="font-family:var(--font-body);font-size:14px;color:var(--tt-ink-500);margin:16px 0 0;max-width:26ch">Your court, your schedule. No membership. Brooklyn waterfront.</p>
+    </div>
+    <div>
+      <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--tt-ink-300);margin-bottom:14px">Explore</div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <a class="tt-footlink" href="how-it-works.html">How it works</a>
+        <a class="tt-footlink" href="pricing.html">Pricing</a>
+        <a class="tt-footlink" href="location.html">Location</a>
+        <a class="tt-footlink" href="events.html">Events</a>
+        <a class="tt-footlink" href="about.html">Our story</a>
+        <a class="tt-footlink" href="faq.html">FAQ</a>
+      </div>
+    </div>
+    <div>
+      <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--tt-ink-300);margin-bottom:14px">Visit</div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <span style="font-family:var(--font-body);font-size:15px;color:var(--tt-ink-700)">Furman St, Brooklyn Waterfront</span>
+        <span style="font-family:var(--font-body);font-size:15px;color:var(--tt-ink-700)">Open daily · 7am–11pm</span>
+        <a class="tt-footlink" href="mailto:hey@tennisterminal.com">hey@tennisterminal.com</a>
+      </div>
+    </div>
+    <div>
+      <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--tt-ink-300);margin-bottom:14px">Follow</div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <a class="tt-footlink" href="#">Instagram</a>
+        <a class="tt-footlink" href="#">TikTok</a>
+        <a class="tt-footlink" href="join.html">Join the waitlist</a>
+      </div>
+    </div>
+  </div>
+  <div style="border-top:1px solid var(--tt-border)">
+    <div style="max-width:1120px;margin:0 auto;padding:20px 24px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap">
+      <span style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--tt-ink-300)">© 2026 Tennis Terminal</span>
+      <span style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--tt-ink-300)">Book · Unlock · Play</span>
+    </div>
+  </div>
+</footer>
+</x-dc>
+</body>
+</html>
