@@ -1,0 +1,106 @@
+---
+// Client behaviour for every [data-waitlist] block on the page.
+// Include once per page that renders a waitlist form.
+---
+<script>
+  // Optional: set PUBLIC_WAITLIST_ENDPOINT in your Vercel env (e.g. a Formspree
+  // URL) to actually capture signups. When empty, the form just shows the
+  // confirmation state without sending anywhere (front-end only, as delivered).
+  const ENDPOINT = import.meta.env.PUBLIC_WAITLIST_ENDPOINT || '';
+
+  function bindWaitlist(root: HTMLElement) {
+    const form = root.querySelector<HTMLFormElement>('form[data-waitlist-form]');
+    if (!form) return;
+
+    const emailInput = form.querySelector<HTMLInputElement>('[data-field="email"]');
+    const phoneInput = form.querySelector<HTMLInputElement>('[data-field="phone"]');
+    const sportInput = form.querySelector<HTMLInputElement>('[data-field="sport"]');
+    const reveal = form.querySelector<HTMLElement>('[data-reveal]');
+    const tcpa = form.querySelector<HTMLElement>('[data-tcpa]');
+    const sportButtons = form.querySelectorAll<HTMLButtonElement>('[data-sport]');
+
+    const formState = root.querySelector<HTMLElement>('[data-state="form"]');
+    const successState = root.querySelector<HTMLElement>('[data-state="success"]');
+
+    const syncReveal = () => {
+      const hasEmail = !!emailInput && emailInput.value.trim().length > 0;
+      if (reveal) reveal.hidden = !hasEmail;
+    };
+    const syncTcpa = () => {
+      const hasPhone = !!phoneInput && phoneInput.value.trim().length > 0;
+      if (tcpa) tcpa.hidden = !hasPhone;
+    };
+
+    emailInput?.addEventListener('input', syncReveal);
+    phoneInput?.addEventListener('input', syncTcpa);
+
+    sportButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const val = btn.getAttribute('data-sport') || '';
+        const already = btn.classList.contains('tt-sport--on');
+        sportButtons.forEach((b) => b.classList.remove('tt-sport--on'));
+        if (!already) {
+          btn.classList.add('tt-sport--on');
+          if (sportInput) sportInput.value = val;
+        } else if (sportInput) {
+          sportInput.value = '';
+        }
+      });
+    });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const payload = {
+        email: emailInput?.value.trim() || '',
+        phone: phoneInput?.value.trim() || '',
+        sport: sportInput?.value || '',
+      };
+
+      if (ENDPOINT) {
+        try {
+          await fetch(ENDPOINT, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+            body: JSON.stringify(payload),
+          });
+        } catch (_) {
+          /* non-blocking — still show confirmation */
+        }
+      }
+
+      // Fill any Join-page confirmation details.
+      if (successState) {
+        successState.querySelectorAll<HTMLElement>('[data-fill="email"]').forEach((el) => {
+          el.textContent = payload.email;
+        });
+        const referEl = successState.querySelector<HTMLInputElement>('[data-fill="referral"]');
+        if (referEl) {
+          const handle = payload.email ? payload.email.split('@')[0].toLowerCase().replace(/[^a-z0-9]/g, '') : 'you';
+          referEl.value = 'tennisterminal.com/r/' + handle;
+        }
+      }
+
+      if (formState) formState.hidden = true;
+      if (successState) successState.hidden = false;
+      root.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+
+    // Copy-referral button (Join page).
+    const copyBtn = successState?.querySelector<HTMLButtonElement>('[data-copy]');
+    const referInput = successState?.querySelector<HTMLInputElement>('[data-fill="referral"]');
+    copyBtn?.addEventListener('click', () => {
+      if (!referInput) return;
+      try {
+        navigator.clipboard?.writeText(referInput.value);
+      } catch (_) { /* ignore */ }
+      const original = copyBtn.textContent;
+      copyBtn.textContent = 'Copied';
+      setTimeout(() => { copyBtn.textContent = original; }, 1800);
+    });
+
+    syncReveal();
+    syncTcpa();
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-waitlist]').forEach(bindWaitlist);
+</script>

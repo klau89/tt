@@ -1,0 +1,137 @@
+/* ============================================================
+   Tennis Terminal — global styles
+   Design tokens (colors, type, spacing, effects) + base element
+   styles + small utility classes, reimplemented natively from the
+   /site design handoff. See /site/_ds for the original reference.
+   ============================================================ */
+
+/* --- Webfonts (free Google Fonts) --- */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap');
+
+:root {
+  /* --- Brand palette --- */
+  --tt-play-green: #10B26A;
+  --tt-ball-yellow: #ECF23F;
+  --tt-marigold: #FB9E1B;
+  --tt-pool-blue: #17A2C4;
+  --tt-court-ink: #163B2A;
+  --tt-honey-cream: #FDF6E6;
+
+  /* --- Green scale --- */
+  --tt-green-700: #0C8A52;
+  --tt-green-600: #10B26A;
+  --tt-green-500: #1FC77C;
+  --tt-green-100: #EBF7F0;
+  --tt-green-50:  #F3FBF7;
+
+  /* --- Neutrals / warm greys on cream --- */
+  --tt-white: #FFFFFF;
+  --tt-cream: #FDF6E6;
+  --tt-cream-shade: #EFE6CE;
+  --tt-border: #EBE0C6;
+  --tt-ink-700: #4A5A4E;
+  --tt-ink-500: #6B6A5F;
+  --tt-ink-300: #9A9270;
+
+  /* --- Semantic / status --- */
+  --tt-danger: #C6552F;
+  --tt-danger-bg: #FBEEE8;
+  --tt-danger-border: #F1D3C6;
+  --tt-success: #10B26A;
+  --tt-success-bg: #EBF7F0;
+  --tt-success-border: #C7E7D7;
+
+  /* --- Semantic aliases --- */
+  --color-bg: var(--tt-honey-cream);
+  --color-surface: var(--tt-white);
+  --color-surface-alt: var(--tt-cream);
+  --color-surface-ink: var(--tt-court-ink);
+  --color-border: var(--tt-cream-shade);
+  --color-border-soft: var(--tt-border);
+  --color-primary: var(--tt-play-green);
+  --color-primary-hover: var(--tt-green-700);
+  --color-primary-on: var(--tt-honey-cream);
+  --color-accent: var(--tt-ball-yellow);
+  --color-accent-on: var(--tt-court-ink);
+  --color-energy: var(--tt-marigold);
+  --color-info: var(--tt-pool-blue);
+  --color-price: var(--tt-court-ink);
+  --color-price-peak: var(--tt-marigold);
+  --text-heading: var(--tt-court-ink);
+  --text-body: var(--tt-ink-700);
+  --text-muted: var(--tt-ink-500);
+  --text-faint: var(--tt-ink-300);
+  --text-on-ink: var(--tt-honey-cream);
+  --color-link: var(--tt-play-green);
+
+  /* --- Type --- */
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --font-mono: 'Space Mono', ui-monospace, monospace;
+  --font-logo: 'Fredoka', system-ui, sans-serif;
+  --font-heading: 'Space Grotesk', system-ui, sans-serif;
+  --font-ui: 'Space Grotesk', system-ui, sans-serif;
+
+  /* --- Radii --- */
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-xl: 14px;
+  --radius-2xl: 18px;
+  --radius-pill: 999px;
+
+  /* --- Shadows --- */
+  --shadow-sm: 0 1px 2px rgba(22,59,42,0.06);
+  --shadow-md: 0 6px 18px rgba(22,59,42,0.10);
+  --shadow-lg: 0 16px 40px rgba(22,59,42,0.14);
+
+  /* --- Motion --- */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --container-max: 1120px;
+}
+
+/* --- Base --- */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--tt-honey-cream);
+  color: var(--tt-ink-700);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--tt-ball-yellow); color: var(--tt-court-ink); }
+a { color: var(--tt-play-green); text-decoration: none; }
+a:hover { color: var(--tt-green-700); }
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--tt-court-ink);
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+p { margin: 0; }
+img { max-width: 100%; }
+
+/* --- FAQ accordion (native details) --- */
+details > summary { list-style: none; cursor: pointer; }
+details > summary::-webkit-details-marker { display: none; }
+details[open] .tt-faq-plus { transform: rotate(45deg); }
+
+/* --- Floating ball motif --- */
+@keyframes ttfloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+
+/* --- Utility classes --- */
+.tt-navlink { font-family: var(--font-display); font-weight: 500; font-size: 15px; color: var(--tt-court-ink); text-decoration: none; }
+.tt-navlink:hover { color: var(--tt-play-green); }
+.tt-footlink { font-family: var(--font-body); font-size: 15px; color: var(--tt-play-green); text-decoration: none; }
+.tt-footlink:hover { color: var(--tt-green-700); }
+.tt-lbl { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--tt-ink-500); margin-bottom: 8px; display: block; }
+.tt-input { width: 100%; font-family: var(--font-body); font-size: 16px; color: var(--tt-court-ink); background: var(--tt-white); border: 1px solid var(--tt-cream-shade); border-radius: 10px; padding: 14px 16px; outline: none; }
+.tt-input:focus { border-color: var(--tt-play-green); }
+.tt-cta-primary { display: inline-block; font-family: var(--font-display); font-weight: 600; font-size: 16px; color: var(--color-primary-on); background: var(--tt-play-green); padding: 15px 30px; border-radius: 10px; transition: background 160ms var(--ease-standard); }
+.tt-cta-primary:hover { background: var(--tt-green-700); color: var(--color-primary-on); }
+
+/* --- Waitlist sport toggle --- */
+.tt-sport { flex: 1; font-family: var(--font-display); font-weight: 600; font-size: 14px; border-radius: 10px; padding: 12px; cursor: pointer; transition: all 140ms var(--ease-standard); background: var(--tt-white); color: var(--tt-ink-500); border: 1px solid var(--tt-cream-shade); }
+.tt-sport--on { background: var(--tt-play-green); color: var(--tt-honey-cream); border-color: var(--tt-play-green); }
+[hidden] { display: none !important; }

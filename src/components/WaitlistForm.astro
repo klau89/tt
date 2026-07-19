@@ -1,0 +1,43 @@
+---
+// Progressive waitlist form (home hero + Join page).
+// Email first; entering an email reveals the optional mobile + sport fields;
+// entering a phone number reveals the TCPA consent copy. On submit the form
+// swaps to the success state (provide it via the `success` slot).
+// Behaviour is wired by WaitlistScript.astro (bind to any [data-waitlist]).
+interface Props {
+  submitLabel?: string;
+  gap?: string;
+  tcpaAlign?: 'left' | 'center';
+}
+const { submitLabel = 'Join the waitlist', gap = '14px', tcpaAlign = 'left' } = Astro.props;
+---
+<div data-waitlist>
+  <div data-state="form">
+    <form data-waitlist-form style={`display:flex;flex-direction:column;gap:${gap}`}>
+      <div>
+        <label class="tt-lbl">Email</label>
+        <input data-field="email" type="email" required placeholder="you@email.com" class="tt-input" />
+      </div>
+      <div data-reveal hidden style={`display:flex;flex-direction:column;gap:${gap}`}>
+        <div>
+          <label class="tt-lbl">Mobile <span style="text-transform:none;letter-spacing:0;color:var(--tt-ink-300)">— optional, for updates &amp; promos</span></label>
+          <input data-field="phone" type="tel" placeholder="(555) 018-2245" class="tt-input" />
+        </div>
+        <div>
+          <label class="tt-lbl">What are you here for? <span style="text-transform:none;letter-spacing:0;color:var(--tt-ink-300)">— optional</span></label>
+          <div style="display:flex;gap:8px">
+            <button type="button" class="tt-sport" data-sport="tennis">Tennis</button>
+            <button type="button" class="tt-sport" data-sport="pickleball">Pickleball</button>
+            <button type="button" class="tt-sport" data-sport="both">Both</button>
+          </div>
+          <input type="hidden" data-field="sport" />
+        </div>
+      </div>
+      <button type="submit" style="font-family:var(--font-display);font-weight:600;font-size:16px;color:var(--color-primary-on);background:var(--tt-play-green);border:none;border-radius:10px;padding:15px 24px;cursor:pointer;margin-top:4px;transition:background 160ms">{submitLabel}</button>
+      <p data-tcpa hidden style={`font-family:var(--font-body);font-size:12px;line-height:1.5;color:var(--tt-ink-300);text-align:${tcpaAlign}`}>By entering your number and joining, you agree to receive marketing and account texts from Tennis Terminal at the number provided, including messages sent by autodialer. Consent isn't a condition of any purchase. Message frequency varies; message &amp; data rates may apply. Reply STOP to cancel or HELP for help. See our <a href="#" style="color:var(--tt-ink-500);text-decoration:underline">Privacy Policy</a> &amp; <a href="#" style="color:var(--tt-ink-500);text-decoration:underline">Terms</a>.</p>
+    </form>
+  </div>
+  <div data-state="success" hidden>
+    <slot name="success" />
+  </div>
+</div>

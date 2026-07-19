@@ -1,0 +1,68 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  path?: string;        // e.g. "/pricing" — used for canonical + OG url
+  ogImage?: string;     // absolute-from-root path, defaults to the storefront hero
+}
+
+const { title, description, path = '/', ogImage = '/assets/photos/storefront.png' } = Astro.props;
+
+const canonical = new URL(path, Astro.site).href;
+const ogImageUrl = new URL(ogImage, Astro.site).href;
+const logoUrl = new URL('/assets/logo/lockup-horizontal.png', Astro.site).href;
+
+// Shared LocalBusiness structured data (update address before launch).
+const localBusiness = {
+  '@context': 'https://schema.org',
+  '@type': 'SportsActivityLocation',
+  name: 'Tennis Terminal',
+  description: 'Self-serve indoor tennis and pickleball on the Brooklyn waterfront. Book, unlock and play from your phone — no membership.',
+  url: Astro.site?.href,
+  image: ogImageUrl,
+  logo: logoUrl,
+  email: 'hey@tennisterminal.com',
+  priceRange: '$$',
+  areaServed: { '@type': 'City', name: 'Brooklyn, NY' },
+  address: { '@type': 'PostalAddress', streetAddress: 'Furman St', addressLocality: 'Brooklyn', addressRegion: 'NY', addressCountry: 'US' },
+  openingHoursSpecification: [{ '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'], opens: '07:00', closes: '23:00' }],
+  sport: ['Tennis', 'Pickleball'],
+};
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href={canonical} />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Tennis Terminal" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={ogImageUrl} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImageUrl} />
+  <link rel="icon" href="/assets/logo/app-icon-180.png" />
+  <script type="application/ld+json" set:html={JSON.stringify(localBusiness)} is:inline></script>
+  <slot name="head" />
+</head>
+<body>
+  <div style="width:100%;overflow-x:hidden;font-family:var(--font-body);min-height:100vh;display:flex;flex-direction:column">
+    <Header />
+    <main style="flex:1">
+      <slot />
+    </main>
+    <Footer />
+  </div>
+</body>
+</html>

@@ -1,3 +1,61 @@
+# Tennis Terminal — Marketing Website
+
+Production build of the Tennis Terminal marketing + waitlist site, built with
+[Astro](https://astro.build) as a fast static site. Recreated natively from the
+design handoff in [`/site`](./site) (kept as a visual + copy reference).
+
+## Run it locally
+
+```bash
+npm install
+npm run dev      # local dev server at http://localhost:4321
+npm run build    # production build → ./dist
+npm run preview  # preview the production build
+```
+
+## Deploy (Vercel)
+
+This repo is a standard Astro project — Vercel auto-detects the framework, runs
+`astro build`, and serves `./dist`. No config needed. Pushing a branch creates a
+preview deployment; merging to `main` publishes to production.
+
+## Before launch — a short checklist
+
+- **Domain:** set the real domain in [`astro.config.mjs`](./astro.config.mjs)
+  (`site`). It drives canonical URLs + the sitemap. Then point the GoDaddy domain
+  at Vercel (Vercel → Project → Settings → Domains).
+- **Waitlist backend:** the form is front-end only as delivered. To capture
+  signups, set a `PUBLIC_WAITLIST_ENDPOINT` environment variable in Vercel (e.g. a
+  [Formspree](https://formspree.io) endpoint). When set, submissions POST there;
+  when empty, the form just shows the confirmation state. See
+  [`src/components/WaitlistScript.astro`](./src/components/WaitlistScript.astro).
+- **Photos:** the images in `public/assets/photos` are AI-generated placeholders
+  (compressed for the web). Swap for real photography when available; keep the
+  `alt` text.
+- **Structured data:** finalize the street address in the LocalBusiness JSON-LD
+  ([`src/layouts/Layout.astro`](./src/layouts/Layout.astro)) once it's public.
+
+## Project structure
+
+```
+src/
+  layouts/Layout.astro        # <head>, SEO/OG tags, JSON-LD, header + footer
+  components/Header.astro      # sticky nav
+  components/Footer.astro      # site footer
+  components/WaitlistForm.astro    # progressive waitlist form
+  components/WaitlistScript.astro  # client behaviour for the form
+  pages/                       # index, how-it-works, pricing, location,
+                               # events, faq, about, join
+  styles/global.css            # design tokens + base styles
+public/
+  assets/                      # logos + photos
+  map.html                     # Leaflet map embedded on the Location page
+  robots.txt
+site/                          # ORIGINAL design handoff (reference only)
+```
+
+---
+
 # Handoff: Tennis Terminal — Marketing Website
 
 ## Overview
