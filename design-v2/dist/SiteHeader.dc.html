@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/tt-design-system-dcc5791d-6fec-4442-b63f-5703ae2374c4/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/tt-design-system-dcc5791d-6fec-4442-b63f-5703ae2374c4/tokens/colors.css">
+<link rel="stylesheet" href="_ds/tt-design-system-dcc5791d-6fec-4442-b63f-5703ae2374c4/tokens/typography.css">
+<link rel="stylesheet" href="_ds/tt-design-system-dcc5791d-6fec-4442-b63f-5703ae2374c4/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/tt-design-system-dcc5791d-6fec-4442-b63f-5703ae2374c4/tokens/effects.css">
+<link rel="stylesheet" href="_ds/tt-design-system-dcc5791d-6fec-4442-b63f-5703ae2374c4/styles.css">
+<script src="_ds/tt-design-system-dcc5791d-6fec-4442-b63f-5703ae2374c4/_ds_bundle.js"></script>
+<style>
+  .tt-navlink { font-family: var(--font-display); font-weight: 500; font-size: 15px; color: var(--tt-court-ink); text-decoration:none; }
+  .tt-navlink:hover { color: var(--tt-play-green); }
+  .tt-hdr { max-width:1120px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; justify-content:space-between; gap:20px; position:relative; }
+  .tt-nav { display:flex; align-items:center; gap:26px; }
+  .tt-nav-cta { font-family:var(--font-display); font-weight:600; font-size:15px; color:var(--color-primary-on); background:var(--tt-play-green); padding:11px 20px; border-radius:10px; text-decoration:none; transition:background 160ms; }
+  .tt-nav-cta:hover { background:var(--tt-green-700); color:var(--color-primary-on); }
+  .tt-nav-toggle { position:absolute; opacity:0; pointer-events:none; }
+  .tt-burger { display:none; flex-direction:column; gap:5px; width:44px; height:44px; align-items:center; justify-content:center; cursor:pointer; border-radius:10px; margin:-6px; }
+  .tt-burger span { display:block; width:24px; height:2.5px; background:var(--tt-court-ink); border-radius:2px; transition:transform .22s ease, opacity .18s ease; }
+  @media (max-width:899px){
+    .tt-burger { display:flex; }
+    .tt-nav { position:absolute; top:100%; left:0; right:0; flex-direction:column; align-items:stretch; gap:0; background:var(--tt-honey-cream); border-bottom:1px solid var(--tt-border); padding:4px 24px 18px; display:none; box-shadow:0 16px 40px rgba(22,59,42,0.12); z-index:60; }
+    .tt-nav-toggle:checked ~ .tt-nav { display:flex; }
+    .tt-nav .tt-navlink { padding:16px 0; font-size:18px; border-bottom:1px solid var(--tt-border); }
+    .tt-nav-cta { margin-top:16px; text-align:center; font-size:16px; padding:14px 20px; }
+    .tt-nav-toggle:checked ~ .tt-burger span:nth-child(1){ transform:translateY(7.5px) rotate(45deg); }
+    .tt-nav-toggle:checked ~ .tt-burger span:nth-child(2){ opacity:0; }
+    .tt-nav-toggle:checked ~ .tt-burger span:nth-child(3){ transform:translateY(-7.5px) rotate(-45deg); }
+  }
+</style>
+</helmet>
+<header style="position:sticky;top:0;z-index:50;width:100%;background:rgba(253,246,230,0.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--tt-border);font-family:var(--font-body)">
+  <div class="tt-hdr">
+    <a href="index.html" style="display:flex;align-items:center">
+      <x-import component-from-global-scope="TennisTerminalDesignSystem_dcc579.Logo" variant="horizontal" height="{{ 34 }}" asset-base="assets/logo" hint-size="180px,34px"></x-import>
+    </a>
+    <input type="checkbox" id="tt-nav-toggle" class="tt-nav-toggle" aria-hidden="true" tabindex="-1">
+    <label for="tt-nav-toggle" class="tt-burger" role="button" aria-label="Toggle menu"><span></span><span></span><span></span></label>
+    <nav class="tt-nav">
+      <a class="tt-navlink" href="how-it-works.html">How it works</a>
+      <a class="tt-navlink" href="pricing.html">Pricing</a>
+      <a class="tt-navlink" href="location.html">Location</a>
+      <a class="tt-navlink" href="events.html">Events</a>
+      <a class="tt-navlink" href="faq.html">FAQ</a>
+      <a class="tt-nav-cta" href="join.html">Join the waitlist</a>
+    </nav>
+  </div>
+</header>
+</x-dc>
+</body>
+</html>
