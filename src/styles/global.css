@@ -123,6 +123,25 @@ details[open] .tt-faq-plus { transform: rotate(45deg); }
 /* --- Utility classes --- */
 .tt-navlink { font-family: var(--font-display); font-weight: 500; font-size: 15px; color: var(--tt-court-ink); text-decoration: none; }
 .tt-navlink:hover { color: var(--tt-play-green); }
+
+/* --- Header + responsive hamburger nav --- */
+.tt-hdr { max-width: 1120px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px; position: relative; }
+.tt-nav { display: flex; align-items: center; gap: 26px; }
+.tt-nav-cta { font-family: var(--font-display); font-weight: 600; font-size: 15px; color: var(--color-primary-on); background: var(--tt-play-green); padding: 11px 20px; border-radius: 10px; text-decoration: none; transition: background 160ms; }
+.tt-nav-cta:hover { background: var(--tt-green-700); color: var(--color-primary-on); }
+.tt-nav-toggle { position: absolute; opacity: 0; pointer-events: none; }
+.tt-burger { display: none; flex-direction: column; gap: 5px; width: 44px; height: 44px; align-items: center; justify-content: center; cursor: pointer; border-radius: 10px; margin: -6px; }
+.tt-burger span { display: block; width: 24px; height: 2.5px; background: var(--tt-court-ink); border-radius: 2px; transition: transform .22s ease, opacity .18s ease; }
+@media (max-width: 899px) {
+  .tt-burger { display: flex; }
+  .tt-nav { position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; background: var(--tt-honey-cream); border-bottom: 1px solid var(--tt-border); padding: 4px 24px 18px; display: none; box-shadow: 0 16px 40px rgba(22,59,42,0.12); z-index: 60; }
+  .tt-nav-toggle:checked ~ .tt-nav { display: flex; }
+  .tt-nav .tt-navlink { padding: 16px 0; font-size: 18px; border-bottom: 1px solid var(--tt-border); }
+  .tt-nav-cta { margin-top: 16px; text-align: center; font-size: 16px; padding: 14px 20px; }
+  .tt-nav-toggle:checked ~ .tt-burger span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+  .tt-nav-toggle:checked ~ .tt-burger span:nth-child(2) { opacity: 0; }
+  .tt-nav-toggle:checked ~ .tt-burger span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+}
 .tt-footlink { font-family: var(--font-body); font-size: 15px; color: var(--tt-play-green); text-decoration: none; }
 .tt-footlink:hover { color: var(--tt-green-700); }
 .tt-lbl { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--tt-ink-500); margin-bottom: 8px; display: block; }

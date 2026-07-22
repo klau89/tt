@@ -1,18 +1,22 @@
 ---
-// Sticky, translucent cream header with blur — shared across all pages.
+// Sticky, translucent cream header with blur. Nav collapses into a CSS-only
+// hamburger menu under 900px (checkbox toggle, animates to an X). Shared across
+// all pages. The menu resets on navigation since each page loads fresh.
 ---
 <header style="position:sticky;top:0;z-index:50;width:100%;background:rgba(253,246,230,0.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--tt-border);font-family:var(--font-body)">
-  <div style="max-width:1120px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
+  <div class="tt-hdr">
     <a href="/" style="display:flex;align-items:center" aria-label="Tennis Terminal home">
       <img src="/assets/logo/lockup-horizontal.svg" alt="Tennis Terminal" height="34" style="height:34px;width:auto;display:block" />
     </a>
-    <nav style="display:flex;align-items:center;gap:26px;flex-wrap:wrap">
+    <input type="checkbox" id="tt-nav-toggle" class="tt-nav-toggle" aria-hidden="true" tabindex="-1" />
+    <label for="tt-nav-toggle" class="tt-burger" role="button" aria-label="Toggle menu"><span></span><span></span><span></span></label>
+    <nav class="tt-nav">
       <a class="tt-navlink" href="/how-it-works">How it works</a>
       <a class="tt-navlink" href="/pricing">Pricing</a>
       <a class="tt-navlink" href="/location">Location</a>
       <a class="tt-navlink" href="/events">Events</a>
       <a class="tt-navlink" href="/faq">FAQ</a>
+      <a class="tt-nav-cta" href="/join">Join the waitlist</a>
     </nav>
-    <a href="/join" style="font-family:var(--font-display);font-weight:600;font-size:15px;color:var(--color-primary-on);background:var(--tt-play-green);padding:11px 20px;border-radius:10px;text-decoration:none;transition:background 160ms">Join the waitlist</a>
   </div>
 </header>
